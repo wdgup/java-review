@@ -1,0 +1,4 @@
+# Project exclude paths
+/easy_excel/target/
+/excel-parse/target/
+/spring01/target/
