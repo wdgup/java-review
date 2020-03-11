@@ -37,12 +37,21 @@ public class Result<T> {
         return new Result(200,"操作成功");
     }
     public static Result faild(){
-        return new Result(200,"操作成功");
+        return new Result(500,"操作失败");
     }
     public Result(int code, String message) {
         this(code,message,null);
     }
 
+    public int getCode() {
+        return code;
+    }
 
+    public String getMessage() {
+        return message;
+    }
 
+    public T getData() {
+        return data;
+    }
 }

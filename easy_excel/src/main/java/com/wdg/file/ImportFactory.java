@@ -1,5 +1,7 @@
 package com.wdg.file;
 
+import com.wdg.common.Result;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,4 +12,8 @@ import org.springframework.stereotype.Component;
 public class ImportFactory {
 
 
+    @Async
+    public Result execute(String filePath,String userCode,String template){
+        return null;
+    }
 }

@@ -1,6 +1,11 @@
 server:
-  port: 8888
+  port: 9000
 spring:
   data:
     mongodb:
       database: easy_excel
+upload:
+  path: /D:/upload/
+static:
+  file:
+    path: /static/

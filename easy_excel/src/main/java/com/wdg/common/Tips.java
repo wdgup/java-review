@@ -25,4 +25,6 @@ public final class Tips {
     public static final Tips OK = new Tips(200,"操作成功");
     public static final Tips NO_DATA_FOUND = new Tips(101,"没有找到数据");
     public static final Tips INNER_ERROR = new Tips(102,"操作失败");
+    public static final Tips UPLOAD_PARAM_ERROR = new Tips(103,"上传失败");
+    public static final Tips UPLOAD_FILE_ERROR = new Tips(103,"文件格式不正确");
 }
