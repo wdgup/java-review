@@ -26,12 +26,13 @@ public class ExcelTemplateServiceImpl implements ExcelTemplateService {
 
     @Override
     public Result addTemplate(ExcelTemplate template) {
-        List<ExcelTemplate> templateList = excelTemplateRepository.findByUserIs(template.getUser());
+        List<ExcelTemplate> templateList = excelTemplateRepository.findByUser(template.getUser());
         if(!CollectionUtils.isEmpty(templateList)){
             if(templateList.stream().anyMatch(t -> t.getName().equals(template.getUser()))){
                 return new Result(110,"已存在该模板，请重新输入模板");
             }
         }
+        template.setUser("admin");
         template.setCreateTtime(new Date());
         template.setUpdateTime(new Date());
         excelTemplateRepository.save(template);

@@ -5,17 +5,19 @@ import com.wdg.common.Result;
 import com.wdg.common.Tips;
 import com.wdg.constant.Constants;
 import com.wdg.entity.ExcelColumn;
+import com.wdg.repository.ColumnRepository;
 import com.wdg.service.ColumnService;
 import com.wdg.vo.ColumnCondition;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -30,16 +32,27 @@ public class ColumnServiceImpl implements ColumnService {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+
+    private ColumnRepository columnRepository;
     @Override
-    public Result save(List<ExcelColumn> columns) {
-        if(CollectionUtils.isEmpty(columns))
-            return new Result(Tips.PARAM_ERROR);
-        columns.stream().forEach(column -> {
-                    column.setOrder(Objects.isNull(column.getOrder()) ? 0 : column.getOrder());
-                    mongoTemplate.save(column);
-                }
-        );
+    public Result save(ExcelColumn column) {
+         column.setOrder(Objects.isNull(column.getOrder()) ? 0 : column.getOrder());
+         mongoTemplate.save(column);
+
         return Result.ok();
+    }
+
+    @Override
+    public void inserOrUpdate(ExcelColumn column) {
+        ExcelColumn res = columnRepository.findColumnByUserAndTemplate(column.getUser(), column.getTemplate());
+        if(Objects.nonNull(res)){
+            BeanUtils.copyProperties(column,res);
+            res.setUpdateTime(new Date());
+        }else{
+            column.setUpdateTime(new Date());
+            column.setCreateTtime(new Date());
+            columnRepository.save(res);
+        }
     }
 
     @Override

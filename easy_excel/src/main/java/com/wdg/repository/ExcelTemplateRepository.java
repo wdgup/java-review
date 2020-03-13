@@ -16,7 +16,7 @@ public interface ExcelTemplateRepository extends MongoRepository<ExcelTemplate,S
 
 
 
-    List<ExcelTemplate> findByUserIs(String user);
+    List<ExcelTemplate> findByUser(String user);
 
 
 }
