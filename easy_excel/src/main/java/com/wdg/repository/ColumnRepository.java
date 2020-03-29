@@ -1,10 +1,12 @@
 package com.wdg.repository;
 
-import org.apache.poi.ss.formula.functions.Column;
+import com.wdg.entity.ExcelColumn;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ColumnRepository extends MongoRepository<Column, String> {
+public interface ColumnRepository extends MongoRepository<ExcelColumn, String> {
 
+
+    ExcelColumn findColumnByUserAndTemplate(String user,String template);
 }

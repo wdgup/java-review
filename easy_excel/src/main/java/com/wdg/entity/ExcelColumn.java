@@ -23,9 +23,8 @@ public class ExcelColumn extends BaseEntity{
     private Integer order;
     @Field("column_type")
     private String columnType;
-    @Field("template_name")
-    private String excelTemplateName;
-
-
-
+    @Field("template")
+    private String template;
+    @Field("user_name")
+    private String user;
 }

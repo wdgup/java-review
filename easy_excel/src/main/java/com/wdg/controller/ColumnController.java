@@ -25,8 +25,8 @@ public class ColumnController {
     @Autowired
     private ColumnService columnService;
     @PostMapping("/save")
-    public Result save(List<ExcelColumn> columns){
-        return columnService.save(columns);
+    public Result save(ExcelColumn column){
+        return columnService.save(column);
     }
 
     @PostMapping("/list")

@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface ColumnService {
 
-    Result save(List<ExcelColumn> columns);
+    Result save(ExcelColumn columns);
+
+    void inserOrUpdate(ExcelColumn column);
 
 
     Result<DataResult<ExcelColumn>> dataList(ColumnCondition condition);
