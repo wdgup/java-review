@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring01" />
+        <module name="async-test" />
         <module name="easy_excel" />
         <module name="excelparse" />
       </profile>
@@ -15,6 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="async-test" options="-parameters" />
       <module name="easy_excel" options="-parameters" />
       <module name="excelparse" options="-parameters" />
       <module name="spring01" options="-parameters" />

@@ -17,6 +17,7 @@
         <module>spring01</module>
         <module>excel-parse</module>
         <module>easy_excel</module>
+        <module>async-test</module>
     </modules>
 
     <properties>
