@@ -53,6 +53,9 @@ class StackX{
     public boolean isEmpty(){
         return  top == -1;
     }
+    public boolean isFull(){
+        return  top == SIZE;
+    }
 
 }
 
